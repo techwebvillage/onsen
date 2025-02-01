@@ -1,24 +1,67 @@
-# README
+# 温泉ベホマズン 🧖‍♀️♨️
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Ruby](https://img.shields.io/badge/Ruby-3.2.2-red)
+![Rails](https://img.shields.io/badge/Rails-7.1.2-red)
 
-Things you may want to cover:
+## 💭 概要
 
-* Ruby version
+**温泉ベホマズン**は、温泉での癒しの体験を共有するためのプラットフォームです。
+疲れた心と体を温泉で「ベホマ（回復）」させましょう！
 
-* System dependencies
+## ✨ 特徴
 
-* Configuration
+- 🏊‍♀️ 温泉施設の口コミ投稿・共有
+- 📸 複数画像のアップロード機能
+- ⭐️ 5段階での評価システム
+- 🔍 施設名・地域での検索機能
+- 💰 料金情報の共有
+- 📱 レスポンシブ対応
 
-* Database creation
+## 🛠 主な使用技術
 
-* Database initialization
+### バックエンド
+- Ruby 3.2.2
+- Rails 7.1.2
+- PostgreSQL
 
-* How to run the test suite
+### フロントエンド
+- SCSS
+- JavaScript
+- Hotwire (Turbo, Stimulus)
 
-* Services (job queues, cache servers, search engines, etc.)
+### インフラ
+- Heroku
+- AWS S3（画像ストレージ）
 
-* Deployment instructions
+## 💫 機能一覧
 
-* ...
+1. **ユーザー管理機能**
+   - 新規登録
+   - ログイン/ログアウト
+   - マイページ
+
+2. **温泉施設投稿機能**
+   - 施設名
+   - 住所
+   - 説明文
+   - 評価（5段階）
+   - 料金
+   - 画像（複数枚）
+
+3. **検索機能**
+   - 施設名での検索
+   - 地域での検索
+
+4. **レビュー機能**
+   - コメント
+   - 評価
+
+## 🌊 こだわりポイント
+
+- 和風テイストのデザイン
+- 使いやすいUI/UX
+- モバイルフレンドリーな実装
+- 画像プレビュー機能
+- 直感的な操作性
+
+## 📥 インストール
