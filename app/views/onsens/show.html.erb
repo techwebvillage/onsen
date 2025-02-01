@@ -1,0 +1,55 @@
+<div class="onsen-detail">
+  <h1><%= @onsen.name %></h1>
+
+  <div class="onsen-images">
+    <% if @onsen.images.attached? %>
+      <% @onsen.images.each do |image| %>
+        <%= image_tag image %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="onsen-info">
+    <p>
+      <strong>住所：</strong>
+      <%= @onsen.address %>
+    </p>
+
+    <p>
+      <strong>説明：</strong>
+      <%= @onsen.description %>
+    </p>
+
+    <p>
+      <strong>評価：</strong>
+      <%= "⭐️" * @onsen.rating %>
+    </p>
+
+    <p>
+      <strong>料金：</strong>
+      ¥<%= @onsen.price %>
+    </p>
+  </div>
+
+  <div class="onsen-actions">
+    <% if user_signed_in? %>
+      <%= link_to '編集', edit_onsen_path(@onsen), class: 'btn btn-primary' %>
+      <%= link_to '削除', onsen_path(@onsen), 
+          method: :delete, 
+          data: { turbo_confirm: "本当に削除しますか？" }, 
+          class: 'btn btn-danger' %>
+    <% end %>
+    <%= link_to '戻る', onsens_path, class: 'btn btn-secondary' %>
+  </div>
+
+  <div class="reviews-section">
+    <h2>レビュー</h2>
+    <% @reviews.each do |review| %>
+      <div class="review">
+        <p><strong><%= review.user.email %></strong></p>
+        <p>評価: <%= "⭐️" * review.rating %></p>
+        <p><%= review.content %></p>
+      </div>
+    <% end %>
+  </div>
+</div> 

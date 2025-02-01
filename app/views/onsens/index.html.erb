@@ -1,0 +1,32 @@
+<div class="index-header">
+  <h1>温泉一覧</h1>
+  <div class="index-actions">
+    <% if user_signed_in? %>
+      <%= link_to '新規温泉登録', new_onsen_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="search-section">
+  <%= form_with url: onsens_path, method: :get, local: true, class: 'search-form' do |f| %>
+    <%= f.text_field :keyword, placeholder: "施設名や地域で検索", class: 'search-input' %>
+    <%= f.submit '検索', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<div class="onsens-grid">
+  <% @onsens.each do |onsen| %>
+    <div class="onsen-card">
+      <% if onsen.images.attached? %>
+        <%= image_tag onsen.images.first %>
+      <% end %>
+      <h2><%= link_to onsen.name, onsen_path(onsen) %></h2>
+      <p class="address"><%= onsen.address %></p>
+      <div class="rating">
+        評価: <%= "⭐️" * onsen.rating %>
+      </div>
+      <p class="price">料金: ¥<%= onsen.price %></p>
+      <%= link_to '詳細を見る', onsen_path(onsen), class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div> 

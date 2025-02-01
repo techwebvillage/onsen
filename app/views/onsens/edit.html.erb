@@ -1,0 +1,37 @@
+<h1>温泉施設の編集</h1>
+
+<%= form_with(model: @onsen, local: true) do |f| %>
+  <div>
+    <%= f.label :name, '施設名' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :address, '住所' %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :description, '説明' %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :rating, '評価' %>
+    <%= f.number_field :rating, in: 1..5 %>
+  </div>
+
+  <div>
+    <%= f.label :price, '料金' %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div>
+    <%= f.label :images, '画像' %>
+    <%= f.file_field :images, multiple: true %>
+  </div>
+
+  <%= f.submit '更新する' %>
+<% end %>
+
+<%= link_to '戻る', onsen_path(@onsen) %> 

@@ -1,0 +1,51 @@
+<div class="form-container">
+  <h1>新規温泉施設の登録</h1>
+
+  <%= form_with(model: @onsen, local: true) do |f| %>
+    <% if @onsen.errors.any? %>
+      <div class="error-messages">
+        <h2><%= @onsen.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @onsen.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, '施設名' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address, '住所' %>
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, '説明' %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :rating, '評価（1-5）' %>
+      <%= f.number_field :rating, in: 1..5, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price, '料金' %>
+      <%= f.number_field :price, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :images, '画像' %>
+      <%= f.file_field :images, multiple: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit '登録する', class: 'btn btn-primary' %>
+      <%= link_to '戻る', onsens_path, class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div> 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "温泉ベホマズン" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <%= link_to "温泉ベホマズン", root_path %>
+      </div>
+      <div class="navbar-menu">
+        <% if user_signed_in? %>
+          <%= link_to "投稿する", new_onsen_path, class: "nav-link" %>
+          <%= link_to "マイページ", "#", class: "nav-link" %>
+          <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link btn-danger" %>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+        <% end %>
+      </div>
+    </nav>
+
+    <% if notice %>
+      <div class="notice"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert"><%= alert %></div>
+    <% end %>
+
+    <main class="container">
+      <%= yield %>
+    </main>
+  </body>
+</html>
